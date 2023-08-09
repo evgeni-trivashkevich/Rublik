@@ -1,0 +1,501 @@
+<html>
+  <head>
+    <title>My Sample</title>
+    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script> -->
+      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+      <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+      <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+      <!-- Uses a transparent header that draws on top of the layout's background -->
+      <style>
+          .demo-layout-transparent {
+              background: url('./assets/madrun.jpg') center;
+          }
+          .demo-layout-transparent .mdl-layout__header,
+          .demo-layout-transparent .mdl-layout__drawer-button {
+              /* This background is dark, so we set text to white. Use 87% black instead if
+                 your background is light. */
+              color: white;
+          }
+      </style>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+
+
+    <script type="text/javascript">
+        var websites = {
+            'roger': {
+                websiteName: 'Roger',
+                priceSelector: '.product__box-content .price__value'
+            },
+            '1amper': {
+                websiteName: '1Amper',
+                priceSelector: '.b-product-cost__price span:first-child'
+            },
+            'tgt': {
+                websiteName: 'TGT',
+                priceSelector: '#price .price_value'
+            },
+            'nbparts': {
+                websiteName: 'NBparts',
+                priceSelector: '.values_wrapper .price_value'
+            },
+            'polmira': {
+                websiteName: 'Polmira',
+                priceSelector: '.price-new.priceService'
+            },
+            'marketperts': {
+                websiteName: 'Marketperts',
+                priceSelector: '.price_matrix_block .price_value'
+            },
+            'idroid': {
+                websiteName: 'iDroid',
+                priceSelector: '.b-product-cost span:first-child'
+            },
+            'tvoi': {
+                websiteName: 'Tvoi',
+                priceSelector: '.ok-product__price-block .current-price'
+            }
+        };
+
+      var productsToShow = {
+          "products": [
+              {
+                  "productName": 'Дисплей Huawei P20 lite',
+                  "websitesToCheck": [
+                      {
+                          "websiteKey": 'roger',
+                          "websiteUrl": 'https://roger.by/products/ekran-dlya-huawei-p20-lite-ane-lx1-s-tachskrinom-tsvet-chernyj'
+                      },
+                      {
+                          "websiteKey": '1amper',
+                          "websiteUrl": 'https://1amper.by/p77346556-displej-original-dlya.html'
+                      },
+                      {
+                          "websiteKey": 'tgt',
+                          "websiteUrl": 'https://tgt.by/52186/'
+                      },
+                      {
+                          "websiteKey": 'nbparts',
+                          "websiteUrl": 'https://nbparts.by/katalog/komplektuyushhie-dlya-telefonov/komplektuyushhie-dlya-huawei/lcd_touchscreen_5/lcd_displey_dlya_huawei_p20_lite_nova_3e_s_tachskrinom_chernyy'
+                      },
+                      {
+                          "websiteKey": 'polmira',
+                          "websiteUrl": 'https://www.polmira-shop.by/id/displey--sensor---huawei-p20-lite-ane-lx1-black---taiwan-7709.html'
+                      },
+                      {
+                          "websiteKey": 'marketperts',
+                          "websiteUrl": 'https://marketparts.by/catalog/displei/displeynyy_modul_huawei_p20_lite_chernyy_1/'
+                      },
+                      {
+                          "websiteKey": 'idroid',
+                          "websiteUrl": 'https://idroid.by/p84176359-displej-ekran-huawei.html'
+                      },
+                      {
+                          "websiteKey": 'tvoi',
+                          "websiteUrl": 'https://tvoi.by/zapchasti_dlya_mobilnyh_telefonov/displei_ekrany_dlya_telefonov/25734/'
+                      }
+                  ]
+              },
+            {
+              "productName": 'Дисплей Huawei P smart 2019',
+              "websitesToCheck": [
+                {
+                  "websiteKey": 'roger',
+                  "websiteUrl": 'https://roger.by/products/ekran-dlya-huawei-p-smart-2019-pot-lx1-s-tachskrinom-tsvet-chernyj'
+                },
+                {
+                  "websiteKey": '1amper',
+                  "websiteUrl": 'https://1amper.by/p95296769-displej-original-dlya.html'
+                },
+                {
+                  "websiteKey": 'tgt',
+                  "websiteUrl": 'https://tgt.by/529095/'
+                },
+                {
+                  "websiteKey": 'nbparts',
+                  "websiteUrl": 'https://nbparts.by/katalog/komplektuyushhie-dlya-telefonov/komplektuyushhie-dlya-huawei/lcd_touchscreen_5/lcd_displey_dlya_huawei_p_smart_2019_psmart2019_s_tachskrinom_chernyy_cog'
+                },
+                {
+                  "websiteKey": 'polmira',
+                  "websiteUrl": 'https://www.polmira-shop.by/id/displey--sensor---huawei-p-smart-2019-pot-lx1-black---taiwan-12092.html'
+                },
+                {
+                  "websiteKey": 'marketperts',
+                  "websiteUrl": 'https://marketparts.by/catalog/displei/displeynyy_modul_huawei_p_smart_2019_black/'
+                },
+                {
+                  "websiteKey": 'idroid',
+                  "websiteUrl": 'https://idroid.by/p96297256-displej-ekran-huawei.html'
+                },
+                {
+                  "websiteKey": 'tvoi',
+                  "websiteUrl": 'https://tvoi.by/zapchasti_dlya_mobilnyh_telefonov/displei_ekrany_dlya_telefonov/27032/'
+                }
+              ]
+            },
+              {
+                  "productName": 'Дисплей Huawei P Smart Z',
+                  "websitesToCheck": [
+                      {
+                          "websiteKey": 'roger',
+                          "websiteUrl": 'https://roger.by/products/ekran-dlya-huawei-p-smart-z-2019-stk-lx1-s-tachskrinom-tsvet-chernyj'
+                      },
+                      {
+                          "websiteKey": '1amper',
+                          "websiteUrl": 'https://1amper.by/p111976769-displej-original-dlya.html'
+                      },
+                      {
+                          "websiteKey": 'tgt',
+                          "websiteUrl": 'https://tgt.by/534015/'
+                      },
+                      {
+                          "websiteKey": 'nbparts',
+                          "websiteUrl": 'https://nbparts.by/katalog/komplektuyushhie-dlya-telefonov/komplektuyushhie-dlya-huawei/lcd_touchscreen_5/lcd_displey_dlya_huawei_p_smart_z_stk_lx1_y9s_s_tachskrinom_chernyy_cof'
+                      },
+                      {
+                          "websiteKey": 'polmira',
+                          "websiteUrl": 'https://www.polmira-shop.by/id/displey--sensor---huawei-y9-prime-2019-honor-9x-p-smart-z-stk-l21-black---taiwan-12566.html'
+                      },
+                      {
+                          "websiteKey": 'marketperts',
+                          "websiteUrl": 'https://marketparts.by/catalog/displei/displeynyy_modul_huawei_p_smart_z_y9_prime_2019_1/'
+                      },
+                      {
+                          "websiteKey": 'tvoi',
+                          "websiteUrl": 'https://tvoi.by/zapchasti_dlya_mobilnyh_telefonov/displei_ekrany_dlya_telefonov/27033/'
+                      }
+                  ]
+              },
+              {
+                  "productName": 'Дисплей Huawei y6 2019',
+                  "websitesToCheck": [
+                      {
+                          "websiteKey": 'roger',
+                          "websiteUrl": 'https://roger.by/products/ekran-dlya-huawei-y6-2019-mrd-lx1f-s-tachskrinom-tsvet-chernyj'
+                      },
+                      {
+                          "websiteKey": '1amper',
+                          "websiteUrl": 'https://1amper.by/p102297004-displej-original-dlya.html'
+                      },
+                      {
+                          "websiteKey": 'tgt',
+                          "websiteUrl": 'https://tgt.by/105198/'
+                      },
+                      {
+                          "websiteKey": 'polmira',
+                          "websiteUrl": 'https://www.polmira-shop.by/id/displey--sensor---huawei-y6-2019-honor-8a-y6s-mrd-lx1f-jat-lx1-black---cog-korea-10238.html'
+                      },
+                      {
+                          "websiteKey": 'marketperts',
+                          "websiteUrl": 'https://marketparts.by/catalog/displei/displeynyy_modul_huawei_y6_2019_honor_8a_y6s_1/'
+                      },
+                      {
+                          "websiteKey": 'idroid',
+                          "websiteUrl": 'https://idroid.by/p104077536-displej-ekran-huawei.html'
+                      },
+                      {
+                          "websiteKey": 'tvoi',
+                          "websiteUrl": 'https://tvoi.by/zapchasti_dlya_mobilnyh_telefonov/displei_ekrany_dlya_telefonov/26007/'
+                      }
+                  ]
+              },
+              {
+                  "productName": 'Дисплей Xiaomi Redmi 9a',
+                  "websitesToCheck": [
+                      {
+                          "websiteKey": 'roger',
+                          "websiteUrl": 'https://roger.by/products/ekran-dlya-xiaomi-redmi-9a-s-tachskrinom-tsvet-chernyj'
+                      },
+                      {
+                          "websiteKey": '1amper',
+                          "websiteUrl": 'https://1amper.by/p142605961-displej-original-dlya.html'
+                      },
+                      {
+                          "websiteKey": 'tgt',
+                          "websiteUrl": 'https://tgt.by/480195/'
+                      },
+                      {
+                          "websiteKey": 'nbparts',
+                          "websiteUrl": 'https://nbparts.by/katalog/komplektuyushhie-dlya-telefonov/zapchasti_dlya_xiaomi/lcd_touchscreen_13/lcd_displey_dlya_xiaomi_redmi_9a_redmi_9c_v_sbore_s_tachskrinom_chernyy_original'
+                      },
+                      {
+                          "websiteKey": 'polmira',
+                          "websiteUrl": 'https://www.polmira-shop.by/id/displey--sensor---xiaomi-redmi-9a-redmi-9c-redmi-10a-black---cog-korea-12550.html'
+                      },
+                      {
+                          "websiteKey": 'marketperts',
+                          "websiteUrl": 'https://marketparts.by/catalog/displei/displeynyy_modul_xiaomi_redmi_9a_9c_chernyy/'
+                      },
+                      {
+                          "websiteKey": 'idroid',
+                          "websiteUrl": 'https://idroid.by/p193997928-displej-ekran-xiaomi.html'
+                      },
+                      {
+                          "websiteKey": 'tvoi',
+                          "websiteUrl": 'https://tvoi.by/zapchasti_dlya_mobilnyh_telefonov/displei_ekrany_dlya_telefonov/29491/'
+                      }
+                  ]
+              },
+              {
+                  "productName": 'Дисплей Xiaomi Redmi 9t',
+                  "websitesToCheck": [
+                      {
+                          "websiteKey": 'roger',
+                          "websiteUrl": 'https://roger.by/products/ekran-dlya-xiaomi-redmi-9t-s-tachskrinom-tsvet-chernyj'
+                      },
+                      {
+                          "websiteKey": '1amper',
+                          "websiteUrl": 'https://1amper.by/p148892438-displej-original-dlya.html'
+                      },
+                      {
+                          "websiteKey": 'tgt',
+                          "websiteUrl": 'https://tgt.by/536709/'
+                      },
+                      {
+                          "websiteKey": 'nbparts',
+                          "websiteUrl": 'https://nbparts.by/katalog/komplektuyushhie-dlya-telefonov/zapchasti_dlya_xiaomi/lcd_touchscreen_13/lcd_displey_dlya_xiaomi_redmi_9t_poco_m3_v_sbore_s_tachskrinom_chernyy_orig_cable'
+                      },
+                      {
+                          "websiteKey": 'polmira',
+                          "websiteUrl": 'https://www.polmira-shop.by/id/displey--sensor---xiaomi-poco-m3-redmi-9t-black---cog-korea-11567.html'
+                      },
+                      {
+                          "websiteKey": 'marketperts',
+                          "websiteUrl": 'https://marketparts.by/catalog/displei/displeynyy_modul_xiaomi_redmi_9t_chernyy/'
+                      },
+                      {
+                          "websiteKey": 'idroid',
+                          "websiteUrl": 'https://idroid.by/p193995566-displej-ekran-xiaomi.html'
+                      },
+                      {
+                          "websiteKey": 'tvoi',
+                          "websiteUrl": 'https://tvoi.by/zapchasti_dlya_mobilnyh_telefonov/displei_ekrany_dlya_telefonov/29491-13006-2/'
+                      }
+                  ]
+              },
+              {
+                  "productName": 'Дисплей Xiaomi Redmi Note 7',
+                  "websitesToCheck": [
+                      {
+                          "websiteKey": 'roger',
+                          "websiteUrl": 'https://roger.by/products/ekran-dlya-xiaomi-redmi-note-7-note-7-pro-s-tachskrinom-tsvet-chernyj'
+                      },
+                      {
+                          "websiteKey": '1amper',
+                          "websiteUrl": 'https://1amper.by/p97165778-displej-original-dlya.html'
+                      },
+                      {
+                          "websiteKey": 'tgt',
+                          "websiteUrl": 'https://tgt.by/205951/'
+                      },
+                      {
+                          "websiteKey": 'nbparts',
+                          "websiteUrl": 'https://nbparts.by/katalog/komplektuyushhie-dlya-telefonov/zapchasti_dlya_xiaomi/lcd_touchscreen_13/lcd_displey_dlya_xiaomi_redmi_note_7_s_tachskrinom_chernyy'
+                      },
+                      {
+                          "websiteKey": 'polmira',
+                          "websiteUrl": 'https://www.polmira-shop.by/id/displey--sensor---xiaomi-redmi-note-7-m1901f7g-black---cog-korea-12336.html'
+                      },
+                      {
+                          "websiteKey": 'marketperts',
+                          "websiteUrl": 'https://marketparts.by/catalog/displei/displeynyy_modul_xiaomi_redmi_note_7_chernyy_1/'
+                      },
+                      {
+                          "websiteKey": 'idroid',
+                          "websiteUrl": 'https://idroid.by/p103597241-displej-ekran-xiaomi.html'
+                      },
+                      {
+                          "websiteKey": 'tvoi',
+                          "websiteUrl": 'https://tvoi.by/zapchasti_dlya_mobilnyh_telefonov/displei_ekrany_dlya_telefonov/26461/'
+                      }
+                  ]
+              },
+              {
+                  "productName": 'Дисплей Xiaomi Redmi Note 8',
+                  "websitesToCheck": [
+                      {
+                          "websiteKey": 'roger',
+                          "websiteUrl": 'https://roger.by/products/ekran-dlya-xiaomi-redmi-note-8-s-tachskrinom-tsvet-chernyj'
+                      },
+                      {
+                          "websiteKey": '1amper',
+                          "websiteUrl": 'https://1amper.by/p111977529-displej-original-dlya.html'
+                      },
+                      {
+                          "websiteKey": 'tgt',
+                          "websiteUrl": 'https://tgt.by/468726/'
+                      },
+                      {
+                          "websiteKey": 'nbparts',
+                          "websiteUrl": 'https://nbparts.by/katalog/komplektuyushhie-dlya-telefonov/zapchasti_dlya_xiaomi/lcd_touchscreen_13/lcd_displey_dlya_xiaomi_redmi_note_8_v_sbore_s_tachskrinom_chernyy'
+                      },
+                      {
+                          "websiteKey": 'polmira',
+                          "websiteUrl": 'https://www.polmira-shop.by/id/displey--sensor---xiaomi-redmi-note-8-m1908c3jg-black---taiwan-12795.html'
+                      },
+                      {
+                          "websiteKey": 'marketperts',
+                          "websiteUrl": 'https://marketparts.by/catalog/displei/displeynyy_modul_xiaomi_redmi_note_8_chernyy_1/'
+                      },
+                      {
+                          "websiteKey": 'tvoi',
+                          "websiteUrl": 'https://tvoi.by/zapchasti_dlya_mobilnyh_telefonov/displei_ekrany_dlya_telefonov/26462/'
+                      }
+                  ]
+              },
+              {
+                  "productName": 'Дисплей Xiaomi Redmi Note 9',
+                  "websitesToCheck": [
+                      {
+                          "websiteKey": 'roger',
+                          "websiteUrl": 'https://roger.by/products/ekran-dlya-xiaomi-redmi-note-9-s-tachskrinom-tsvet-chernyj'
+                      },
+                      {
+                          "websiteKey": '1amper',
+                          "websiteUrl": 'https://1amper.by/p131527145-displej-original-dlya.html'
+                      },
+                      {
+                          "websiteKey": 'tgt',
+                          "websiteUrl": 'https://tgt.by/480197/'
+                      },
+                      {
+                          "websiteKey": 'nbparts',
+                          "websiteUrl": 'https://nbparts.by/katalog/komplektuyushhie-dlya-telefonov/zapchasti_dlya_xiaomi/lcd_touchscreen_13/lcd_displey_dlya_xiaomi_redmi_note_9_x10_v_sbore_s_tachskrinom_chernyy'
+                      },
+                      {
+                          "websiteKey": 'polmira',
+                          "websiteUrl": 'https://www.polmira-shop.by/id/displey--sensor---xiaomi-redmi-note-9-redmi-10x-m2003j15ss-black---taiwan-10168.html'
+                      },
+                      {
+                          "websiteKey": 'marketperts',
+                          "websiteUrl": 'https://marketparts.by/catalog/displei/displeynyy_modul_xiaomi_redmi_note_9/'
+                      },
+                      {
+                          "websiteKey": 'tvoi',
+                          "websiteUrl": 'https://tvoi.by/zapchasti_dlya_mobilnyh_telefonov/displei_ekrany_dlya_telefonov/29492/'
+                      }
+                  ]
+              }
+          ]
+      };
+
+
+      $(function() {
+          var result = [];
+        console.log( "ready!" );
+          productsToShow.products.forEach(product => {
+              product.websitesToCheck.forEach(website => {
+                  var websiteData = websites[website.websiteKey];
+                  if (websiteData && websiteData.priceSelector) {
+                      $.get(website.websiteUrl, function(response) {
+                          var productPrice = $(response).find(websiteData.priceSelector).text();
+                          result.push({
+                              productName: product.productName,
+                              websiteKey: website.websiteKey,
+                              price: productPrice
+                          });
+                          // console.log("Hey I found out for Product: " + product.productName + '. for website: ' + websiteData.websiteName + ' ' + productPrice);
+                      });
+                  }
+
+              });
+          });
+
+          $(document).ajaxStop(function() {
+              var sortedResult = result.sort(function(a, b) {
+                  const nameA = a.productName.toUpperCase(); // ignore upper and lowercase
+                  const nameB = b.productName.toUpperCase(); // ignore upper and lowercase
+                  if (nameA > nameB) {
+                      return -1;
+                  }
+                  if (nameA < nameB) {
+                      return 1;
+                  }
+
+                  // names must be equal
+                  return 0;
+              });
+              console.log('sortedResult: ', sortedResult);
+
+              var contentData = '';
+              sortedResult.forEach(productData => {
+                  contentData += "<tr><td>" + productData.productName + "</td><td>" + websites[productData.websiteKey].websiteName + "</td><td>" + productData.price + "</td></tr>";
+              });
+              $("#resultBody").html(contentData);
+              $('#loader').hide();
+
+              // This function will be triggered every time any ajax request is requested and completed
+          });
+      });
+    </script>
+  </head>
+  <body>
+
+  <div class="demo-layout-transparent mdl-layout mdl-js-layout">
+      <header class="mdl-layout__header mdl-layout__header--transparent">
+          <div class="mdl-layout__header-row">
+              <!-- Title -->
+              <span class="mdl-layout-title">Зубры продакшен</span>
+              <!-- Add spacer, to align navigation to the right -->
+              <div class="mdl-layout-spacer"></div>
+              <!-- Navigation -->
+              <nav class="mdl-navigation">
+                  <a class="mdl-navigation__link" href="">Link</a>
+                  <a class="mdl-navigation__link" href="">Link</a>
+                  <a class="mdl-navigation__link" href="">Link</a>
+                  <a class="mdl-navigation__link" href="">Link</a>
+              </nav>
+          </div>
+      </header>
+      <div class="mdl-layout__drawer">
+          <span class="mdl-layout-title">Title</span>
+          <nav class="mdl-navigation">
+              <a class="mdl-navigation__link" href="">Link</a>
+              <a class="mdl-navigation__link" href="">Link</a>
+              <a class="mdl-navigation__link" href="">Link</a>
+              <a class="mdl-navigation__link" href="">Link</a>
+          </nav>
+      </div>
+      <main class="mdl-layout__content">
+          <!-- Accent-colored raised button with ripple -->
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+              Button
+          </button>
+          <!-- Colored FAB button -->
+          <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored">
+              <i class="material-icons">add</i>
+          </button>
+          <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp">
+              <thead>
+              <tr>
+                  <th class="mdl-data-table__cell--non-numeric">Product Name</th>
+                  <th>Website Name</th>
+                  <th>Price</th>
+              </tr>
+              </thead>
+              <tbody id="resultBody">
+              <!--            <tr>-->
+              <!--                <td class="mdl-data-table__cell&#45;&#45;non-numeric">Acrylic (Transparent)</td>-->
+              <!--                <td>25</td>-->
+              <!--                <td>$2.90</td>-->
+              <!--            </tr>-->
+              <!--            <tr>-->
+              <!--                <td class="mdl-data-table__cell&#45;&#45;non-numeric">Plywood (Birch)</td>-->
+              <!--                <td>50</td>-->
+              <!--                <td>$1.25</td>-->
+              <!--            </tr>-->
+              <!--            <tr id="#exampleProduct">-->
+              <!--                <td class="mdl-data-table__cell&#45;&#45;non-numeric">Laminate (Gold on Blue)</td>-->
+              <!--                <td>10</td>-->
+              <!--                <td>$2.35</td>-->
+              <!--            </tr>-->
+              </tbody>
+          </table>
+
+          <div id="loader" class="mdl-progress mdl-js-progress mdl-progress__indeterminate"></div>
+      </main>
+  </div>
+
+  </body>
+</html>
